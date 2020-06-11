@@ -6,7 +6,11 @@ namespace ThreadPractice
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+            var task1 = new MonitorTryEnter();
+            task1.DoSomething();
+
+            Console.ReadLine();
         }
     }
 }
