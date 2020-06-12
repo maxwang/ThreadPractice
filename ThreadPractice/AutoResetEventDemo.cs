@@ -5,8 +5,9 @@ using System.Threading;
 
 namespace ThreadPractice
 {
-    public class AutoResetEventDemo : IThreadTest
+    public class AutoResetEventDemo : IThreadTest, IDisposable
     {
+        private bool _disposed = false;
         //this is a quick demo for auto reset event,
         //new thread will stop and wait for signal to continue, you could add a timeout
         //Represents a thread synchronization event that, when signaled, resets automatically after releasing a single waiting thread. This class cannot be inherited.
@@ -59,6 +60,23 @@ namespace ThreadPractice
             Console.WriteLine($"{name} ends.");
         }
 
+        public void Dispose() => Dispose(true);
+        
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _paidEvent.Dispose();
+                _pickEvent.Dispose();
+            }
+
+            _disposed = true;
+        }
 
     }
 }

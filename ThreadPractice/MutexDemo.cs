@@ -5,10 +5,29 @@ using System.Threading;
 
 namespace ThreadPractice
 {
-    public class MutexDemo : IThreadTest
+    public class MutexDemo : IThreadTest, IDisposable
     {
+        private bool _disposed = false;
         private readonly Mutex _mut = new Mutex(false, "test");
         private int _count = 0;
+
+        public void Dispose() => Dispose(true);
+        
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _mut.Dispose();
+            }
+
+            _disposed = true;
+        }
+
         public void DoSomething()
         {
             for (int i = 0; i < 10; i++)
