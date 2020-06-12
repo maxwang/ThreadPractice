@@ -12,7 +12,9 @@ namespace ThreadPractice
             //task1.DoSomething();
 
             //IThreadTest task = new ThreadJoin();
-            IThreadTest task = new InterlockedDemo();
+            //IThreadTest task = new InterlockedDemo();
+            //IThreadTest task = new InterlockedDemo();
+            IThreadTest task = new MutexDemo();
 
             task.DoSomething();
 

@@ -7,7 +7,7 @@ namespace ThreadPractice
 {
     public class MonitorTryEnter : IThreadTest
     {
-        private static readonly object _lockObj = new Object();
+        private readonly object _lockObj = new Object();
         // we should use monitor tryenter to avoid dead lock
         // lock is a short version for monitor tryenter/monitor exit
         // lock might cause dead lock, lock use Monitor.Enter which does  not accept timeout parameter
