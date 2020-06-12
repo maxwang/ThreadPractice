@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace ThreadPractice
 {
-    public class MonitorTryEnter
+    public class MonitorTryEnter : IThreadTest
     {
         private static readonly object _lockObj = new Object();
         // we should use monitor tryenter to avoid dead lock
